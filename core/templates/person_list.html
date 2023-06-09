@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    
+    <ul>
+        {% for person in persons %}
+        <li>
+            <h3>{{ person.name }}</h3>
+            <p>Position: {{ person.position }}</p>
+            <img src="{{ person.image.url }}" alt="{{ person.name }} ">
+            <p>LinkedIn: <a href="{{ person.linkedin }}">{{ person.linkedin }}</a></p>
+            <p>Instagram: <a href="{{ person.instagram }}">{{ person.instagram }}</a></p>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    
+    
+    
+</body>
+</html>
